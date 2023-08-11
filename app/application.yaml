@@ -14,7 +14,7 @@ spec:
   source:
     chart: 'argocd-image-updater-regex-range-poc'
     repoURL: 'ghcr.io/bebosudo'
-    targetRevision: "0.1.1"
+    targetRevision: "0.1.2"
 #    helm:
 #      values: ""
   destination:

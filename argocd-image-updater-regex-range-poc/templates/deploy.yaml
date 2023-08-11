@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
         - name: poc
-          image: docker.io/bebosudo/argocd-image-updater-regex-range-poc:latest
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
