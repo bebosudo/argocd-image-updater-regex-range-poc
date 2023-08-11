@@ -1,5 +1,6 @@
 # argocd-image-updater-regex-range-poc
 Repro to test that regex with ranges aren't supported by ArgoCD Image Updater.
+Reported at https://github.com/argoproj-labs/argocd-image-updater/issues/606.
 
 Clone this repo and install the sample app in your cluster already running ArgoCD and ArgoCD Image Updater with:
 
