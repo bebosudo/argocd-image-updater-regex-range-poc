@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/write-back-method: argocd
-    argocd-image-updater.argoproj.io/image-list: app=bebosudo/argocd-image-updater-regex-range-poc
+    argocd-image-updater.argoproj.io/image-list: app=docker.io/bebosudo/argocd-image-updater-regex-range-poc
     argocd-image-updater.argoproj.io/app.update-strategy: latest
     argocd-image-updater.argoproj.io/app.allow-tags: 'regexp:^[a-z\d]{11}$'
 spec:
@@ -14,10 +14,9 @@ spec:
   source:
     chart: 'argocd-image-updater-regex-range-poc'
     repoURL: 'ghcr.io/bebosudo'
-#            'https://registry-1.docker.io/bebosudo/argocd-image-updater-regex-range-poc'
-    targetRevision: "0.1.0"
-    helm:
-      values: ""
+    targetRevision: "0.1.1"
+#    helm:
+#      values: ""
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd-regex-range-poc
