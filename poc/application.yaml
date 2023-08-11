@@ -12,7 +12,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'ssh://git@github.com/bebosudo/argocd-image-updater-regex-range-poc.git'
+    repoURL: 'https://github.com/bebosudo/argocd-image-updater-regex-range-poc'
     path: poc/
     targetRevision: HEAD
     directory:
