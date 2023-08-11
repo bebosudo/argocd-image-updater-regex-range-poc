@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-image-update-regex-poc-app
+  name: argocd-image-updater-regex-range-poc
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/write-back-method: argocd
@@ -12,11 +12,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/bebosudo/argocd-image-updater-regex-range-poc'
-    path: poc/
-    targetRevision: HEAD
-    directory:
-      exclude: 'application.yaml'
+    chart: 'argocd-image-updater-regex-range-poc'
+    repoURL: 'ghcr.io/bebosudo'
+#            'https://registry-1.docker.io/bebosudo/argocd-image-updater-regex-range-poc'
+    targetRevision: "0.1.0"
+    helm:
+      values: ""
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd-regex-range-poc
