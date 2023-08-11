@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-image-update-regex-poc-app
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/write-back-method: argocd
+    argocd-image-updater.argoproj.io/image-list: app=bebosudo/argocd-image-updater-regex-range-poc
+    argocd-image-updater.argoproj.io/app.update-strategy: latest
+    argocd-image-updater.argoproj.io/app.allow-tags: 'regexp:^[a-z\d]{11}$'
+spec:
+  project: default
+  source:
+    repoURL: 'ssh://git@github.com/bebosudo/argocd-image-updater-regex-range-poc.git'
+    path: poc/
+    targetRevision: HEAD
+    directory:
+      exclude: 'application.yaml'
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd-regex-range-poc
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+      allowEmpty: false
+    syncOptions:
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true

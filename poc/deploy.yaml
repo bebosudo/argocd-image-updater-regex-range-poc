@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poc-deploy
+  labels:
+    app: poc-app
+spec:
+  selector:
+    matchLabels:
+      app: poc-app
+  template:
+    metadata:
+      labels:
+    app: poc-app
+    spec:
+      containers:
+        - name: poc
+          image: bebosudo/argocd-image-updater-regex-range-poc:latest
